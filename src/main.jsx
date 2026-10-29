@@ -16,7 +16,7 @@ const profile = {
   github: 'https://github.com/musmantech8',
   linkedin: 'https://www.linkedin.com/in/muhmmad-usman-364108401/',
   location: 'Pakistan',
-  photo: '/usman-cutout.webp',
+  photo: '/usman-headshot.webp',
 };
 
 const skills = [
@@ -234,8 +234,8 @@ function App() {
 
           <div className="hero-photo fade" style={{ '--d': '.12s' }}>
             <div className="photo-panel">
-              <img src={profile.photo} alt="Portrait of Muhammad Usman" width="560" height="618" fetchpriority="high"
-                onError={(e) => { e.currentTarget.src = '/usman-photo.jpg'; }} />
+              <img src={profile.photo} alt="Portrait of Muhammad Usman" width="560" height="700" fetchpriority="high"
+                onError={(e) => { e.currentTarget.src = '/usman-headshot.webp'; }} />
             </div>
             <div className="photo-tag">
               <span className="tag-icon"><GraduationCap size={18} /></span>
