@@ -4,3 +4,6 @@ dist
 *.log
 .env
 .env.*
+
+# Each project lives in its own GitHub repository
+projects/
