@@ -31,26 +31,29 @@ const projects = [
   {
     number: '01',
     title: 'Employee Management System',
-    type: 'Web application',
-    description: 'An employee portal with structured records, add and edit workflows, role-based pages, reporting and an overview dashboard.',
-    tags: ['Oracle APEX', 'SQL', 'PL/SQL'],
+    type: 'HR web application',
+    description: 'Employee records, departments and salaries with a dashboard, search, filters and CSV export. Oracle schema with triggers, a salary audit trail and a PL/SQL package for raises, transfers and terminations.',
+    tags: ['Oracle SQL', 'PL/SQL', 'JavaScript'],
     visual: 'employees',
+    repo: 'https://github.com/musmantech8/employee-management-system',
   },
   {
     number: '02',
     title: 'Project Tracking Dashboard',
     type: 'Dashboard',
-    description: 'Track project status, owners, milestones and progress with summary cards, charts and drill-down reports.',
-    tags: ['Oracle APEX', 'SQL', 'Charts'],
+    description: 'Projects, owners, tasks and deadlines with KPI cards, status charts and overdue alerts. A PL/SQL package keeps each project status in sync with its tasks.',
+    tags: ['Oracle SQL', 'PL/SQL', 'Charts'],
     visual: 'dashboard',
+    repo: 'https://github.com/musmantech8/project-tracking-dashboard',
   },
   {
     number: '03',
     title: 'Inventory & Stock Manager',
     type: 'Business application',
-    description: 'Products, stock movements, low-stock alerts and searchable item reports, built on a normalised data model.',
-    tags: ['Oracle APEX', 'Database Design', 'Reports'],
+    description: 'Products, stock in/out and low-stock alerts. A database trigger keeps quantities correct and blocks negative stock; reports include stock value and a running balance.',
+    tags: ['Oracle SQL', 'PL/SQL', 'Database Design'],
     visual: 'inventory',
+    repo: 'https://github.com/musmantech8/inventory-stock-manager',
   },
 ];
 
@@ -313,7 +316,7 @@ function App() {
                 <p className="eyebrow">Projects</p>
                 <h2>Selected work</h2>
               </div>
-              <p className="head-note">Applications built around reporting, workflows and well-structured data.</p>
+              <p className="head-note">Working apps with Oracle SQL and PL/SQL backends — each one has its own GitHub repository.</p>
             </div>
 
             <div className="projects">
@@ -325,7 +328,7 @@ function App() {
                     <h3>{p.title}</h3>
                     <p>{p.description}</p>
                     <div className="tags">{p.tags.map((t) => <span key={t}>{t}</span>)}</div>
-                    <a className="link" href={profile.github} target="_blank" rel="noreferrer">View on GitHub <ArrowUpRight size={15} /></a>
+                    <a className="link" href={p.repo} target="_blank" rel="noreferrer">View code on GitHub <ArrowUpRight size={15} /></a>
                   </div>
                 </article>
               ))}
