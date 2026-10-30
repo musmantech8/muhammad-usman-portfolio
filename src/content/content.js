@@ -50,9 +50,9 @@ export const about = {
 
 // `value` is the real number shown on the page; `suffix` is appended to it.
 export const stats = [
-  { value: 5, suffix: '+', label: 'Core technologies' },
-  { value: 3, suffix: '', label: 'Applications' },
-  { value: 1, suffix: '', label: 'Degree in progress' },
+  { value: 5, suffix: '', label: 'Oracle APEX applications' },
+  { value: 1, suffix: '', label: 'Website (React)' },
+  { value: 6, suffix: '', label: 'Public GitHub repositories' },
 ];
 
 export const skills = [
