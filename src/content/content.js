@@ -91,7 +91,7 @@ export const projects = [
   {
     number: '01',
     title: 'Employee Management System',
-    type: 'HR web application',
+    type: 'HR application  ·  Oracle APEX with a PL/SQL back end',
     description:
       'Employee records, departments and salaries with a dashboard, search, filters and CSV export. Oracle schema with triggers, a salary audit trail and a PL/SQL package for raises, transfers and terminations.',
     tags: ['Oracle SQL', 'PL/SQL', 'JavaScript'],
@@ -121,7 +121,7 @@ END give_raise;`,
   {
     number: '02',
     title: 'Project Tracking Dashboard',
-    type: 'Dashboard',
+    type: 'Dashboard application  ·  Oracle APEX with a PL/SQL back end',
     description:
       'Projects, owners, tasks and deadlines with KPI cards, status charts and overdue alerts. A PL/SQL package keeps each project status in sync with its tasks.',
     tags: ['Oracle SQL', 'PL/SQL', 'Charts'],
@@ -150,7 +150,7 @@ END project_progress;`,
   {
     number: '03',
     title: 'Inventory & Stock Manager',
-    type: 'Business application',
+    type: 'Business application  ·  Oracle APEX with a PL/SQL back end',
     description:
       'Products, stock in/out and low-stock alerts. A database trigger keeps quantities correct and blocks negative stock; reports include stock value and a running balance.',
     tags: ['Oracle SQL', 'PL/SQL', 'Database Design'],

@@ -9,7 +9,7 @@ export function Projects() {
         <SectionHead
           eyebrow="Projects"
           title="Selected work"
-          note="Working apps with Oracle SQL and PL/SQL backends. Each one has its own GitHub repository."
+          note="Five Oracle APEX applications with PL/SQL business logic, each with its own GitHub repository. This portfolio itself is a React website."
         />
 
         <div className="flex flex-col gap-24 md:gap-32">
