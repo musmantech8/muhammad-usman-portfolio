@@ -146,15 +146,15 @@ export function Contact() {
             {/* Optional contact form: opens the visitor's mail app, nothing is stored or sent by the site */}
             <form onSubmit={sendForm} className="mx-auto mt-14 grid max-w-[640px] gap-4 text-left sm:grid-cols-2">
               <label className="flex flex-col gap-2 text-[14px] font-medium text-ink">
-                Name
+                Your name
                 <input className="field" name="name" autoComplete="name" required value={form.name} onChange={update('name')} />
               </label>
               <label className="flex flex-col gap-2 text-[14px] font-medium text-ink">
-                Email
+                Your email
                 <input className="field" type="email" name="email" autoComplete="email" required value={form.email} onChange={update('email')} />
               </label>
               <label className="flex flex-col gap-2 text-[14px] font-medium text-ink sm:col-span-2">
-                Message
+                Your message
                 <textarea className="field" name="message" rows={5} required value={form.message} onChange={update('message')} />
               </label>
               <div className="flex flex-col items-center gap-3 sm:col-span-2">
