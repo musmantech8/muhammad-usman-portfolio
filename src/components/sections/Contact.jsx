@@ -66,7 +66,10 @@ export function Contact() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: contact.accessKey,
-          subject: `Portfolio message from ${form.name}`,
+          // Sender shows as the visitor's name, and replying goes straight to their address.
+          from_name: form.name,
+          replyto: form.email,
+          subject: `Portfolio message from ${form.name} <${form.email}>`,
           name: form.name,
           email: form.email,
           message: form.message,
