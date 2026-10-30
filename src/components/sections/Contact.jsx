@@ -69,7 +69,7 @@ export function Contact() {
           // Sender shows as the visitor's name, and replying goes straight to their address.
           from_name: form.name,
           replyto: form.email,
-          subject: `Portfolio message from ${form.name} <${form.email}>`,
+          subject: `${form.name} <${form.email}>`,
           name: form.name,
           email: form.email,
           message: form.message,
