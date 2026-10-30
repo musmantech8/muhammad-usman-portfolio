@@ -179,6 +179,68 @@ END;`,
   },
 ];
 
+// Added after the first three; the alternating layout follows the order above.
+projects.push(
+  {
+    number: '04',
+    title: 'Library Management System',
+    type: 'Business application  ·  Oracle APEX with PL/SQL business rules',
+    description:
+      'Books, members and loans with dashboard charts, self-service sign-up and role-based access. The database enforces a loan limit of five books, blocks borrowing when no copies are left or a member is suspended, and calculates fines automatically.',
+    tags: ['Oracle APEX', 'PL/SQL', 'Oracle SQL', 'Authentication'],
+    visual: 'inventory',
+    repo: 'https://github.com/musmantech8/library-management-system',
+    demo: 'https://oracleapex.com/ords/r/company_app/library-management-system/login',
+    code: {
+      caption: 'lms_loan_pkg.issue_book — checks limits and suspension before lending',
+      snippet: `PROCEDURE issue_book (
+  p_book_id   IN lms_books.book_id%TYPE,
+  p_member_id IN lms_members.member_id%TYPE,
+  p_loan_days IN NUMBER DEFAULT c_default_loan_days
+) IS
+BEGIN
+  IF open_loans(p_member_id) >= c_max_open_loans THEN
+    RAISE_APPLICATION_ERROR(-20303,
+      'Loan limit reached: a member can hold 5 books at a time.');
+  END IF;
+
+  -- The trigger LMS_LOANS_BI locks the book and takes one copy off the shelf.
+  INSERT INTO lms_loans (book_id, member_id, loan_date, due_date, status)
+  VALUES (p_book_id, p_member_id, TRUNC(SYSDATE),
+          TRUNC(SYSDATE) + p_loan_days, 'ISSUED');
+END issue_book;`,
+    },
+  },
+  {
+    number: '05',
+    title: 'Helpdesk Ticket Tracker',
+    type: 'IT support  ·  Oracle APEX with a controlled ticket workflow',
+    description:
+      'Raise, assign and resolve IT tickets with SLA due dates based on priority, a strict status flow, a full status history and a dashboard of open, overdue and unassigned work. Normal users see only their own tickets; administrators see everything.',
+    tags: ['Oracle APEX', 'PL/SQL', 'Oracle SQL', 'Authentication'],
+    visual: 'dashboard',
+    repo: 'https://github.com/musmantech8/helpdesk-ticket-tracker',
+    demo: 'https://oracleapex.com/ords/r/company_app/helpdesk-ticket-tracker/login',
+    code: {
+      caption: 'hdk_ticket_pkg.is_valid_transition — the allowed status flow',
+      snippet: `FUNCTION is_valid_transition (p_from IN VARCHAR2, p_to IN VARCHAR2)
+  RETURN BOOLEAN IS
+BEGIN
+  IF p_from = 'NEW' THEN
+    RETURN p_to IN ('IN_PROGRESS', 'ON_HOLD');
+  ELSIF p_from = 'IN_PROGRESS' THEN
+    RETURN p_to IN ('ON_HOLD', 'RESOLVED');
+  ELSIF p_from = 'ON_HOLD' THEN
+    RETURN p_to = 'IN_PROGRESS';
+  ELSIF p_from = 'RESOLVED' THEN
+    RETURN p_to IN ('CLOSED', 'IN_PROGRESS');
+  END IF;
+  RETURN FALSE;
+END is_valid_transition;`,
+    },
+  },
+);
+
 export const education = [
   {
     label: 'Currently enrolled',
