@@ -7,19 +7,20 @@ import { EASE, Reveal } from '../ui/Reveal';
 const emptyForm = { name: '', email: '', message: '' };
 
 // Soft animated gradient blobs behind the card. Still for reduced motion.
+// They use radial gradients instead of blur filters (blur is expensive to animate).
 function Blobs() {
   const reduce = useReducedMotion();
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <m.div
-        className="absolute -top-24 -left-20 size-[360px] rounded-full blur-3xl"
-        style={{ background: 'var(--glow)' }}
+        className="absolute -top-24 -left-20 size-[380px] rounded-full"
+        style={{ background: 'radial-gradient(closest-side, var(--glow), transparent)' }}
         animate={reduce ? undefined : { x: [0, 70, 0], y: [0, 40, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
       />
       <m.div
-        className="absolute -right-24 -bottom-24 size-[320px] rounded-full blur-3xl"
-        style={{ background: 'color-mix(in srgb, var(--accent) 18%, transparent)' }}
+        className="absolute -right-24 -bottom-24 size-[340px] rounded-full"
+        style={{ background: 'radial-gradient(closest-side, color-mix(in srgb, var(--accent) 22%, transparent), transparent)' }}
         animate={reduce ? undefined : { x: [0, -60, 0], y: [0, -30, 0] }}
         transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
       />

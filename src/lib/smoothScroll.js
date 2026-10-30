@@ -7,10 +7,11 @@ let lenis = null;
 export function startSmoothScroll() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
 
+  // lerp: each frame the page closes 12% of the remaining distance. This keeps the
+  // smoothing but makes the wheel respond right away (the old long easing felt slow).
   lenis = new Lenis({
-    duration: 1.15,
-    // Ease-out curve close to the site's motion curve.
-    easing: (t) => 1 - Math.pow(1 - t, 4),
+    lerp: 0.12,
+    wheelMultiplier: 1.1,
     smoothWheel: true,
   });
 

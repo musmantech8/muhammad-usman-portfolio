@@ -72,14 +72,13 @@
     color: var(--accent-text);
   }
 
-  /* Glassy card: translucent fill, 1px soft border, layered shadow. */
+  /* Glassy card: translucent fill, 1px soft border, layered shadow.
+     No backdrop-filter: blurring the page behind many cards made scrolling slow. */
   .glass {
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 1rem;
     box-shadow: var(--shadow);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
   }
 
   .grid-bg {

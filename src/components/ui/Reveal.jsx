@@ -2,9 +2,9 @@ import { m, useReducedMotion } from 'framer-motion';
 
 export const EASE = [0.22, 1, 0.36, 1];
 
-// Fade + 24px rise + blur-to-sharp, triggered once when ~15% of the element is visible.
-// With reduced motion it is a plain fade. `filter` is cleared at the end (transitionEnd)
-// because a leftover filter would break the backdrop blur of glass cards inside.
+// Fade + 24px rise, triggered once when ~15% of the element is visible.
+// Only opacity and transform are animated: filter animations (blur) are repainted every
+// frame and made scrolling jank, so they were removed.
 export function Reveal({ as = 'div', delay = 0, className = '', children, ...rest }) {
   const reduce = useReducedMotion();
   const Tag = m[as];
@@ -12,8 +12,8 @@ export function Reveal({ as = 'div', delay = 0, className = '', children, ...res
   const variants = reduce
     ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
     : {
-      hidden: { opacity: 0, y: 24, filter: 'blur(6px)' },
-      visible: { opacity: 1, y: 0, filter: 'blur(0px)', transitionEnd: { filter: 'none' } },
+      hidden: { opacity: 0, y: 24 },
+      visible: { opacity: 1, y: 0 },
     };
 
   return (

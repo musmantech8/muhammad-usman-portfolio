@@ -9,8 +9,8 @@ export function CustomCursor() {
   const enabled = useFancyMotion();
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
-  const ringX = useSpring(x, { stiffness: 320, damping: 32 });
-  const ringY = useSpring(y, { stiffness: 320, damping: 32 });
+  const ringX = useSpring(x, { stiffness: 600, damping: 45, mass: 0.4 });
+  const ringY = useSpring(y, { stiffness: 600, damping: 45, mass: 0.4 });
   const [visible, setVisible] = useState(false);
   const [hovering, setHovering] = useState(false);
 

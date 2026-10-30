@@ -51,7 +51,7 @@ export function Hero() {
         style={{ background: 'radial-gradient(closest-side, var(--glow), transparent)' }}
       />
 
-      <div className="container-x relative grid w-full items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+      <div className="container-x relative grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
         {/* Text column: on mobile it sits above the photo */}
         <div>
           <m.p
