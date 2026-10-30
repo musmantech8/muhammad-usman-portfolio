@@ -31,6 +31,7 @@ function Blobs() {
 export function Contact() {
   const [toast, setToast] = useState('');
   const [form, setForm] = useState(emptyForm);
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const toastTimer = useRef(null);
 
   useEffect(() => () => clearTimeout(toastTimer.current), []);
@@ -50,12 +51,35 @@ export function Contact() {
     }
   };
 
-  // Opens the visitor's own mail app with the message filled in. No server involved.
-  const sendForm = (e) => {
+  // Sends the message to Web3Forms, which emails it to the inbox of the account the key belongs to.
+  const sendForm = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio message from ${form.name}`);
-    const body = encodeURIComponent(`${form.message}\n\nFrom: ${form.name} <${form.email}>`);
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    if (status === 'sending') return;
+    if (!contact.accessKey) {
+      setStatus('error');
+      return;
+    }
+    setStatus('sending');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: contact.accessKey,
+          subject: `Portfolio message from ${form.name}`,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          botcheck: '',
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || 'Send failed');
+      setStatus('success');
+      setForm(emptyForm);
+    } catch {
+      setStatus('error');
+    }
   };
 
   const update = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -130,10 +154,19 @@ export function Contact() {
                 Message
                 <textarea className="field" name="message" rows={5} required value={form.message} onChange={update('message')} />
               </label>
-              <div className="flex justify-center sm:col-span-2">
-                <button type="submit" className="btn btn-outline arrow-slide">
-                  <Send size={16} /> Send message
+              <div className="flex flex-col items-center gap-3 sm:col-span-2">
+                <button type="submit" className="btn btn-outline arrow-slide" disabled={status === 'sending'}>
+                  <Send size={16} /> {status === 'sending' ? 'Sending…' : 'Send message'}
                 </button>
+                <p role="status" className="min-h-[1.5em] text-center text-[15px]">
+                  {status === 'success' && <span className="font-medium text-emerald-700">Thanks, your message has been sent.</span>}
+                  {status === 'error' && (
+                    <span className="font-medium text-red-700">
+                      Sorry, your message could not be sent. Please try again or email me at{' '}
+                      <a className="underline" href={`mailto:${profile.email}`}>{profile.email}</a>.
+                    </span>
+                  )}
+                </p>
               </div>
             </form>
           </div>
