@@ -1,0 +1,66 @@
+/* ==========================================================
+   Design tokens — the ONLY place colours are defined.
+   Dark is the default. [data-theme="light"] overrides below.
+   Accent: Oracle-inspired red-orange (#F04E23), used sparingly.
+   ========================================================== */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0b1120;
+  --bg-elev: #0f172a;
+  --surface: rgba(15, 23, 42, 0.55);
+  --surface-solid: #0f172a;
+  --surface-hover: rgba(30, 41, 59, 0.7);
+  --line: rgba(51, 65, 85, 0.75);
+  --line-strong: #475569;
+
+  --ink: #f8fafc;
+  --text: #cbd5e1;
+  --muted: #94a3b8;
+
+  --accent: #f04e23;
+  --accent-text: #f04e23;
+  --on-accent: #0b1120;
+  --glow: rgba(240, 78, 35, 0.22);
+  --warn: #f87171;
+  --grid: rgba(148, 163, 184, 0.08);
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.35), 0 24px 60px rgba(0, 0, 0, 0.45);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --bg-elev: #f8fafc;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-solid: #ffffff;
+  --surface-hover: #f1f5f9;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+
+  --ink: #0f172a;
+  --text: #334155;
+  --muted: #5b6b82;
+
+  --accent: #f04e23;
+  --accent-text: #c2410c;
+  --on-accent: #0b1120;
+  --glow: rgba(240, 78, 35, 0.14);
+  --warn: #dc2626;
+  --grid: rgba(15, 23, 42, 0.06);
+
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 12px 30px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 2px 6px rgba(15, 23, 42, 0.06), 0 24px 56px rgba(15, 23, 42, 0.12);
+}
+
+/* Smooth colour change when the theme is toggled (added briefly by useTheme). */
+html.theme-animating,
+html.theme-animating * {
+  transition: background-color 0.5s var(--ease), color 0.5s var(--ease),
+    border-color 0.5s var(--ease), fill 0.5s var(--ease) !important;
+}
