@@ -265,5 +265,5 @@ export const contact = {
   text: 'I’m open to opportunities, collaborations and conversations about thoughtful applications.',
   // Web3Forms access key. Create one free at https://web3forms.com with your email;
   // the key is emailed to you. Messages from the form are then delivered to your inbox.
-  accessKey: '',
+  accessKey: '5c0683a7-ffbd-455c-aa98-ddb811b51ca4',
 };
