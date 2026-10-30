@@ -99,7 +99,7 @@ export function Hero() {
             className="mt-7 max-w-[540px] text-[18px] leading-[1.7] text-text"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: EASE, delay: 0.5 }}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.25 }}
           >
             {profile.tagline}
           </m.p>
@@ -108,7 +108,7 @@ export function Hero() {
             className="mt-10 flex flex-wrap items-center gap-4"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: EASE, delay: 0.6 }}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.35 }}
           >
             <Magnetic>
               <a href="#projects" onClick={anchorHandler('projects')} className="btn btn-primary arrow-slide">

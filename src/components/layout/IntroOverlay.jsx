@@ -32,7 +32,7 @@ export function IntroOverlay() {
     const timer = setTimeout(() => {
       markIntroSeen();
       setShow(false);
-    }, 1000);
+    }, 800);
     return () => clearTimeout(timer);
   }, [show]);
 
